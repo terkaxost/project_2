@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+<link href="main.css" rel="stylesheet"></head>
 <body>
     <div id="welcome">
         <h2>page welcome</h2>
-        <div class="welcome">
-            <div><input type="text" id="name" placeholder="Введите свое ФИО"></div>
-            <div><input type="text" id="login" placeholder="Введите свой ник"></div>
-            <div><button class="btn">ВОЙТИ</button></div>
-        </div>
+        <input type="text" id="name" placeholder="Введите свое ФИО">
+        <input type="text" id="login" placeholder="Введите свой ник">
+        <button>ВОЙТИ</button>
     </div>
     <div id="chat">
         <h2>page chat</h2>
@@ -30,7 +28,7 @@
                                 </td>
                             </tr></table>
                         </div>
-                        <button class="btn" id="logout">ВЫЙТИ</button>
+                        <button id="logout">ВЫЙТИ</button>
                     </div>
                 </td>
                 <td>
@@ -38,8 +36,8 @@
                         <h3>Загрузка фото</h3>
                         <img src="" class="previewFoto" id="previewFoto">
                         <br>
-                        <button class="btn" id="fotoCancel">ОТМЕНА</button>
-                        <button class="btn" id="fotoSave">СОХРАНИТЬ</button>
+                        <button id="fotoCancel">ОТМЕНА</button>
+                        <button id="fotoSave">СОХРАНИТЬ</button>
                         <input type="file" id="fileInput">
                     </div>
                 </td>
@@ -48,23 +46,29 @@
                 <td>
                     <div class="userList">
                         <h3>Клиенты чата</h3>
-                        <div class="filter"><input type="text" id="filter" placeholder="Найти..."></div>
+                        <input type="text" id="filter" placeholder="Найти...">
                         <div class="list" id="list"></div>
                     </div>
                 </td>
                 <td>
                     <div class="messages">
                         <h3>Чат</h3>
-                        <div class="usersNum" id="usersNum">Пользователей: ...</div>
+                        <div id="usersNum">users: ...</div>
                         <div id="messages"></div>
-                        <div class="send">
-                            <input type="text" id="textInput" placeholder="Введите сообщение..."><button class="btn" id="send">Отправить</button>
-                        </div>
+                        <input type="text" id="textInput" placeholder="Введите сообщение...">
+                        <button id="send">Отправить</button>
                     </div>
                 </td>
             </tr>
-        </table>            
+        </table>
+        <div class="info">
+            
+            
+        </div>
+        <div class="chat">
+            
+            
         </div>
     </div>
-</body>
+<script type="text/javascript" src="app.bundle.js"></script></body>
 </html>

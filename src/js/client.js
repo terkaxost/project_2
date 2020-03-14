@@ -1,11 +1,13 @@
 import '../scss/main.scss';
 import '../img/ava.png';
+import '../img/preview.png';
 
 // глобальные переменные
 var socket; 
 var user = {};
 var fotos = {}
 var defaultFoto = '../img/ava.png';
+var defaultFotoPreview = '../img/preview.png';
 var previousLogin;
 
 // РАЗДЕЛЫ
@@ -24,7 +26,10 @@ var chatSend = chat.querySelector('#send');
 var chatMessages = chat.querySelector('#messages');
 var chatUsers = chat.querySelector('#list');
 var chatUsersNum = chat.querySelector('#usersNum');
-var fileInput = chat.querySelector('#fileInput');
+var fotoInput = chat.querySelector('#fileInput');
+var fotoCancel = chat.querySelector('#fotoCancel')
+var fotoSave = chat.querySelector('#fotoSave')
+var fotoPreview = chat.querySelector('#previewFoto');
 // выбор раздела
 function page(pageName) {
     if (pageName == "welcome") {
@@ -90,11 +95,11 @@ function initSockets(initUser) {
     }
 }
 // отправка нового сообщения
-chatSend.addEventListener('click', function() {
+chatSend.addEventListener('click', function(e) {
     sendMessage(socket, {
         payload: 'newMessage',
         data: {
-            text: input.value,
+            text: chatInput.value,
             login: user.login,
             date: date()
         }
@@ -158,7 +163,7 @@ var handlers = {
     },
     'numUsers': function() {
         // в фильтре не удалять, а скрывать
-        chatUsersNum.textContent = `users: ${chatUsers.children.length}`;
+        chatUsersNum.textContent = `Пользователей: ${chatUsers.children.length}`;
     },
     'allUsers': function(dataUsers) {
         chatUsers.innerHTML = '';
@@ -212,23 +217,41 @@ var handlers = {
 
 // РАБОТА С ФОТО
 const fileReader = new FileReader();
-
-fileInput.addEventListener('change', function(e) {
+var fotoReader;
+// дефолтное фото для превью
+fotoPreview.src = defaultFotoPreview;
+// выбор из файлов системы
+fotoInput.addEventListener('change', function(e) {
     const file = e.target.files[0];
 
     if (file && file.size <= 300 * 1024) {
         fileReader.readAsDataURL(file);       
         fileReader.addEventListener('load', function(e) {
-            sendMessage(socket, {
-                payload: 'newFoto',
-                data: {
-                    login: user.login,
-                    foto: fileReader.result
-                }
-            });
-        })
+            fotoReader = fileReader.result;
+            fotoPreview.src = fotoReader;
+        });
     }
+}); 
+// отправить фото на сервер
+fotoSave.addEventListener('click', function() {
+    if (fotoReader) {
+        sendMessage(socket, {
+            payload: 'newFoto',
+            data: {
+                login: user.login,
+                foto: fotoReader
+            }
+        });
+    }
+    fotoPreview.src = defaultFotoPreview;
 });
+// отменить выбор фото
+fotoCancel.addEventListener('click', function() {
+    fotoReader = '';
+    fileReader.abort()
+    console.log(fotoReader)
+    fotoPreview.src = defaultFotoPreview;
+})
 // вставка фото в чат
 function fotoHide(currentLogin) {
     if (currentLogin == previousLogin) {
