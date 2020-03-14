@@ -1,11 +1,104 @@
-$body-color: red;
+$body-color: #000;
+$left-width: 300px;
+$chat-height: 530px;
+$scroll-height: 400px;
+$input-height: 30px;
 
 body {
-  color: $body-color;
-  background: #ccc;
-}
-
-ul {
+    color: $body-color;
+    background: #ccc;
     margin: 0;
     padding: 0;
+}
+.btn {
+    width: 120px;
+}
+// welcome
+.welcome {
+    border: 1px solid;
+    width: 200px;
+}
+.welcome div {
+    padding: 5px;
+    text-align: center;
+}
+// user
+.infoUser{
+    border: 1px solid;
+    width: $left-width;
+    height: 250px;
+}
+.user{
+    height: 60px;
+    width: $left-width;  
+    padding: 5px;
+}
+.userFoto {
+    height: 50px;
+    width: 50px;
+    border: 1px solid;
+    border-radius: 25px;
+}
+.infoFoto {
+    border: 1px solid;
+    height: 250px;
+    width: $left-width;
+    top: 250px;
+    left: 250px;
+    text-align: center;
+}
+.previewFoto {
+    height: 120px;
+    width: 120px;
+    border: 1px solid;
+    border-radius: 60px;
+}
+// users
+.userList{
+    border: 1px solid;
+    width: $left-width;
+    height: $chat-height;
+    
+}
+.filter {
+    height: $input-height;
+}
+.list {
+    border: 1px solid;
+    height: $scroll-height;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+// messages
+.messages{
+    border: 1px solid;
+    width: 600px;
+    height: $chat-height;
+}
+.usersNum {
+    height: $input-height;
+}
+#messages {
+    border: 1px solid;
+    width: 600px;
+    height: $scroll-height;
+    overflow-y: scroll;
+}
+.messageFoto {
+    margin: 5px;
+    height: 50px;
+    width: 50px;
+    border: 1px solid;
+    border-radius: 25px;
+}
+.message {
+    height: 60px;
+}
+.send {
+    height: $input-height;
+    text-align: right;
+    padding: 5px;
+}
+#textInput {
+    width: 400px;
 }
