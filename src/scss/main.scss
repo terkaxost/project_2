@@ -1,80 +1,11 @@
-$body-color: #000;
+$body-color: red;
 
 body {
-    color: $body-color;
-    background: #ccc;
+  color: $body-color;
+  background: #ccc;
+}
+
+ul {
     margin: 0;
     padding: 0;
 }
-// user
-.userInfo{
-    // border: 1px solid;
-    width: 250px;
-    height: 170px;
-}
-.user{
-    height: 60px;
-    width: 250px;  
-    padding: 5px;
-}
-.userName {
-    padding-top: 10px;
-    padding-left: 60px;
-}
-.userText {
-    padding-left: 60px;
-}
-.userFoto {
-    position: absolute;
-    margin: 5px;
-    height: 50px;
-    width: 50px;
-    border: 1px solid;
-    border-radius: 25px;
-}
-//chat
-// .chat{
-
-// }
-// users
-.userList{
-    // border: 0.1px solid;
-    width: 250px;
-}
-// messages
-.messages{
-    // border: 0.5px solid;
-    width: 500px;
-}
-#messages {
-    width: 500px;
-    height: 300px;
-    overflow-y: scroll;
-    border: 1px solid;
-}
-.messageFoto {
-    margin: 5px;
-    height: 50px;
-    width: 50px;
-    border: 1px solid;
-    border-radius: 25px;
-}
-.message {
-    height: 60px;
-}
-.me {
-    text-align: left;
-}
-.my {
-    text-align: right; 
-}
-
-
-
-
-
-// input[type=file] {
-    
-// }
-
-
